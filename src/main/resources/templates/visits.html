@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Visits</title>
+</head>
+<body>
+    <h1>Pet Visits</h1>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Pet ID</th>
+        </tr>
+        <tr th:each="visit : ${visits}">
+            <td th:text="${visit.id}"></td>
+            <td th:text="${visit.date}"></td>
+            <td th:text="${visit.description}"></td>
+            <td th:text="${visit.pet.id}"></td>
+        </tr>
+    </table>
+
+    <h2>Add New Visit</h2>
+    <form action="/visits/add" method="post">
+        <label>Date:</label>
+        <input type="date" name="date" required>
+        <label>Description:</label>
+        <input type="text" name="description" required>
+        <label>Pet ID:</label>
+        <input type="number" name="pet.id" required>
+        <button type="submit">Add Visit</button>
+    </form>
+</body>
+</html>
